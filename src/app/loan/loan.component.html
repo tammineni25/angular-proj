@@ -1,0 +1,103 @@
+<div class="header">
+    <a href="#default" class="logo">Hello Bank</a>
+    <div class="header-right">
+    <a [routerLink]="['/login']">Logout</a>
+    </div>
+</div>
+<div class="card">
+    <h4 class="card-header">Apply Loan</h4>
+    <div class="card-body">
+        <form [formGroup]="loansForm" (ngSubmit)="onSubmit()">
+            <div class="alert alert-success" *ngIf="successMsg">
+                <strong>{{successMsg}}</strong> 
+              </div>
+              <div class="alert alert-danger" *ngIf="errorMsg">
+                {{errorMsg}}
+              </div>
+            <div class="form-group">
+                <label for="loanType">Loan Type</label>
+                <select (change)="onChange($event)" class="form-control" id="loanType" formControlName="loanType" [ngClass]="{ 'is-invalid': submitted && f.loanType.errors }">
+                    <option value="">Choose your Loan Type</option>
+                    <option *ngFor="let lType of loanTypeArr" [ngValue]="lType">{{lType}}</option>
+                </select>
+                <div *ngIf="submitted && f.loanType.errors" class="invalid-feedback">
+                    <div *ngIf="f.loanType.errors.required">loanType is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="loanAmount">Loan Amount</label>
+                <input type="text" formControlName="loanAmount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loanAmount.errors }" />
+                <div *ngIf="submitted && f.loanAmount.errors" class="invalid-feedback">
+                    <div *ngIf="f.loanAmount.errors.required">Loan Amount is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="loanApplyDate">Loan Apply Date</label>
+                <input type="text" formControlName="loanApplyDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loanApplyDate.errors }" />
+                <div *ngIf="submitted && f.loanApplyDate.errors" class="invalid-feedback">
+                    <div *ngIf="f.loanApplyDate.errors.required">Loan Apply Date is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rateOfInterest">Rate of Interest</label>
+                <input type="text" formControlName="rateOfInterest" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rateOfInterest.errors }" />
+                <div *ngIf="submitted && f.rateOfInterest.errors" class="invalid-feedback">
+                    <div *ngIf="f.rateOfInterest.errors.required">Rate of Interest is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dourationOfLoan">Douration of Loan</label>
+                <input type="text" formControlName="dourationOfLoan" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dourationOfLoan.errors }" />
+                <div *ngIf="submitted && f.dourationOfLoan.errors" class="invalid-feedback">
+                    <div *ngIf="f.dourationOfLoan.errors.required">Duration of Loan is required</div>
+                </div>
+            </div>
+            <!-- <ng-container *ngIf="isEducation"> -->
+            <div class="form-group">
+                <label for="courseFee">Course Fee</label>
+                <input type="text" formControlName="courseFee" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.courseFee.errors }" />
+                <div *ngIf="submitted && f.courseFee.errors" class="invalid-feedback">
+                    <div *ngIf="f.courseFee.errors.required">Course Fee is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="course">Course</label>
+                <input type="text" formControlName="course" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.course.errors }" />
+                <div *ngIf="submitted && f.course.errors" class="invalid-feedback">
+                    <div *ngIf="f.course.errors.required">Course is required</div>
+                </div>
+            </div>
+        <!-- </ng-container>
+        <ng-container *ngIf="isHome"> -->
+            <div class="form-group">
+                <label for="fatherName">Father Name</label>
+                <input type="text" formControlName="fatherName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fatherName.errors }" />
+                <div *ngIf="submitted && f.fatherName.errors" class="invalid-feedback">
+                    <div *ngIf="f.fatherName.errors.required">Father name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="anualIncome">Annual Income</label>
+                <input type="text" formControlName="anualIncome" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.anualIncome.errors }" />
+                <div *ngIf="submitted && f.anualIncome.errors" class="invalid-feedback">
+                    <div *ngIf="f.anualIncome.errors.required">Annual Income is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="companyName">Company Name</label>
+                <input type="text" formControlName="companyName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.companyName.errors }" />
+                <div *ngIf="submitted && f.companyName.errors" class="invalid-feedback">
+                    <div *ngIf="f.companyName.errors.required">Annual Income is required</div>
+                </div>
+            </div>
+        <!-- </ng-container> -->
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Submit
+                </button>
+                <a routerLink="../home" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

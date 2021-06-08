@@ -1,0 +1,110 @@
+﻿<div class="card">
+    <h4 class="card-header">Register</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="userName">User Name</label>
+                <input type="text" formControlName="userName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
+                <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                    <div *ngIf="f.userName.errors.required">UserName is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="guardianName">Guardian Name</label>
+                <input type="text" formControlName="guardianName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.guardianName.errors }" />
+                <div *ngIf="submitted && f.guardianName.errors" class="invalid-feedback">
+                    <div *ngIf="f.guardianName.errors.required">Guardian Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                    <div *ngIf="f.address.errors.required">Address is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">email is required</div>
+                </div>
+            </div>
+            <div class="group-gap">
+                <label for="gender">Gender</label>
+                <div class="d-block my-3">
+
+                    <div class="custom-control custom-radio">
+                        <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
+          <label class="custom-control-label" for="male">Male</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+          <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
+          <label class="custom-control-label" for="female">Female</label>
+        </div>
+        <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+            <div *ngIf="f.gender.errors.required">Gender is required</div>
+        </div>
+      </div>
+    </div>
+            <div class="form-group">
+                <label for="maritalStatus">Marital Status</label>
+                <select class="form-control" id="maritalStatus" formControlName="maritalStatus" [ngClass]="{ 'is-invalid': submitted && f.maritalStatus.errors }">
+                    <option value="">Choose your marital Status</option>
+                    <option *ngFor="let mstaus of maritalStatus" [ngValue]="mstaus">{{mstaus}}</option>
+                </select>
+                <div *ngIf="submitted && f.maritalStatus.errors" class="invalid-feedback">
+                    <div *ngIf="f.maritalStatus.errors.required">Marital Status is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contactno">Contact Number</label>
+                <input type="text" formControlName="contactno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactno.errors }" />
+                <div *ngIf="submitted && f.contactno.errors" class="invalid-feedback">
+                    <div *ngIf="f.contactno.errors.required">Contact number is required</div>
+                    <div *ngIf="f.contactno.errors.maxlength">Contact number should be 10 digits</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="text" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+                <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                    <div *ngIf="f.dob.errors.required">Date of Birth number is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label for="acctType">Account Type</label>
+                    <select class="form-control" id="acctType" formControlName="acctType" [ngClass]="{ 'is-invalid': submitted && f.acctType.errors }">
+                        <option value="">Choose your Account Type</option>
+                        <option *ngFor="let accType of accountType" [ngValue]="accType">{{accType}}</option>
+                    </select>
+                  <div class="invalid-feedback" *ngIf="submitted && f.acctType.errors?.required">
+                    Please Select Account Type
+                  </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Register
+                </button>
+                <a routerLink="../login" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
