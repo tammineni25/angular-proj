@@ -3,17 +3,17 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
 
-import { LoanComponent } from './loan.component';
+import { LoginComponent } from './login.component';
 
-describe('LoanComponent', () => {
-    let component: LoanComponent;
-    let fixture: ComponentFixture<LoanComponent>;
+describe('LoginComponent', () => {
+    let component: LoginComponent;
+    let fixture: ComponentFixture<LoginComponent>;
     let de: DebugElement;
     let el: HTMLElement;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [LoanComponent],
+            declarations: [LoginComponent],
             imports: [
                 BrowserModule,
                 FormsModule,
@@ -22,14 +22,14 @@ describe('LoanComponent', () => {
             ]
         })
             .compileComponents().then(() => {
-                fixture = TestBed.createComponent(LoanComponent);
+                fixture = TestBed.createComponent(LoginComponent);
                 component = fixture.componentInstance;
                 de = fixture.debugElement.query(By.css('form'))
             });
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(LoanComponent);
+        fixture = TestBed.createComponent(LoginComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
@@ -51,20 +51,15 @@ describe('LoanComponent', () => {
 
     }));
     it('4- form should be invaild', async(() => {
-        component.loansForm.controls['loanType'].setValue('');
-        component.loansForm.controls['loanAmount'].setValue('');
-        component.loansForm.controls['courseFee'].setValue('');
-        component.loansForm.controls['course'].setValue('');
-        expect(component.loansForm.valid).toBeFalsy;
+        component.form.controls['userName'].setValue('');
+        component.form.controls['password'].setValue('');
+        expect(component.form.valid).toBeFalsy;
 
     }));
-    it('5- form should be Valid', async(() => {
-      component.loansForm.controls['loanType'].setValue('Home');
-      component.loansForm.controls['loanAmount'].setValue('12345');
-      component.loansForm.controls['courseFee'].setValue('12321');
-      component.loansForm.controls['course'].setValue('MCA');
-        expect(component.loansForm.valid).toBeTruthy;
+    it('4- form should be Valid', async(() => {
+        component.form.controls['userName'].setValue('Tammineni123');
+        component.form.controls['password'].setValue('Pass12!@');
+        expect(component.form.valid).toBeTruthy;
 
     }));
-
 });
