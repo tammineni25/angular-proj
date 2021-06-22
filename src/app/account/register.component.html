@@ -40,29 +40,28 @@
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                     <div *ngIf="f.email.errors.required">email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                   
                 </div>
             </div>
-            <div class="group-gap">
-                <label for="gender">Gender</label>
-                <div class="d-block my-3">
-
-                    <div class="custom-control custom-radio">
-                        <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
-          <label class="custom-control-label" for="male">Male</label>
-        </div>
-
-        <div class="custom-control custom-radio">
-          <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
-          <label class="custom-control-label" for="female">Female</label>
-        </div>
-        <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
-            <div *ngIf="f.gender.errors.required">Gender is required</div>
-        </div>
-      </div>
-    </div>
+            <div class="form-group">
+                <label>
+                    <input type="radio" value="Male" formControlName="gender" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" >
+                      <span>&nbsp;Male</span>
+                  </label>
+                  <label>
+                    <input type="radio" value="Female" formControlName="gender">
+                      <span>&nbsp;Female</span>
+                  </label>
+                 
+                  <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                    <div *ngIf="f.gender.errors.required">Gender is required</div>
+                   
+                </div>
+            </div>
             <div class="form-group">
                 <label for="maritalStatus">Marital Status</label>
                 <select class="form-control" id="maritalStatus" formControlName="maritalStatus" [ngClass]="{ 'is-invalid': submitted && f.maritalStatus.errors }">
@@ -83,7 +82,7 @@
             </div>
             <div class="form-group">
                 <label for="dob">Date of Birth</label>
-                <input type="text" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+                <input type="date" id="start" name="trip-start" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
                 <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
                     <div *ngIf="f.dob.errors.required">Date of Birth number is required</div>
                 </div>
