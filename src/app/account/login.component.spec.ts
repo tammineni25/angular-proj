@@ -55,7 +55,7 @@ describe('LoginComponent', () => {
         component.form.controls['password'].setValue('');
         expect(component.form.valid).toBeFalsy;
     }));
-    it('4- form should be Valid', async(() => {
+    it('5- form should be Valid', async(() => {
         component.form.controls['userName'].setValue('Tammineni123');
         component.form.controls['password'].setValue('Pass12!@');
         expect(component.form.valid).toBeTruthy;
